@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Employee Directory</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="C:\Users\2395520\Downloads\2648412.jpg" type="image/jpeg">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Employee Directory</h1>
+      <button id="loginBtn">Admin Login</button>
+      <button id="logoutBtn" class="hidden">Logout</button>
+      <button id="addBtn" class="hidden">+ Add Employee</button>
+    </header>
+
+    <section class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search by name or department..." />
+    </section>
+
+    <section id="employeeList" class="card-grid">
+      <!-- Employee cards injected here -->
+    </section>
+  </div>
+
+  <!-- Admin Login Modal -->
+  <div id="loginModal" class="modal hidden">
+    <div class="modal-content">
+      <span id="closeLoginModal" class="close">&times;</span>
+      <h2>Admin Login</h2>
+      <form id="loginForm">
+        <input type="text" id="adminUsername" placeholder="Username" required />
+        <input type="password" id="adminPassword" placeholder="Password" required />
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal for Adding/Editing Employees -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <span id="closeModal" class="close">&times;</span>
+      <h2 id="modalTitle">Add Employee</h2>
+      <form id="employeeForm">
+        <input type="hidden" id="employeeId" />
+        <input type="text" id="name" placeholder="Full Name" required />
+        <input type="text" id="department" placeholder="Department" required />
+        <input type="text" id="position" placeholder="Position" required />
+        <input type="date" id="joiningDate" required />
+        <button type="submit">Save</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
