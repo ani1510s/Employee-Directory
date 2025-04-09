@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Employee Directory</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="images/2648412.jpg" type="image/jpeg">
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="directory.html">Employee Directory</a></li>
+      <li><a href="departments.html">Departments</a></li>
+      <li><a href="#" id="addEmployeeLink" class="hidden">Add Employee</a></li>
+      <li><input type="text" id="searchInput" placeholder="Search..."></li>
+      <li><a href="#" id="loginBtn">Admin Login</a></li>
+      <li><a href="#" id="logoutBtn" class="hidden">Logout</a></li>
+     ><a href="profile.html" class="hidden" id="profileLink">Profile</a></li>
+      <li><a href="settings.html" class="hidden" id="settingsLink">Settings</a></li>
+      <li><a href="help.html">Help</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+  </nav>
+ 
+  <div class="container">
+    <header>
+      <h1>Employee Directory</h1>
+      <button id="addBtn" class="hidden">+ Add Employee</button>
+    </header>
+ 
+         <input type="text" id="searchInput" placeholder="Search by name or department..." />
+    </section>
+ 
+    <section id="employeeList" class="card-grid">
+        <section id="employeeList" class="card-grid">
+            <div class="card">
+              <h2>John Doe</h2>
+              <p>Position: Software Engineer</p>
+              <p>Department: IT</p>
+              <p>Email: john.doe@example.com</p>
+            </div>
+            <div class="card">
+              <h2>Jane Smith</h2>
+              <p>Position: Marketing Manager</p>
+              <p>Department: Marketing</p>
+              <p>Email: jane.smith@example.com</p>
+            </div>
+            <div class="card">
+              <h2>Michael Brown</h2>
+              <p>Position: Sales Executive</p>
+              <p>Department: Sales</p>
+              <p>Email: michael.brown@example.com</p>
+            </div>
+            <div class="card">
+              <h2>Emily Davis</h2>
+              <p>Position: HR Specialist</p>
+              <p>Department: Human Resources</p>
+              <p>Email: emily.davis@example.com</p>
+            </div>
+            <div class="card">
+              <h2>David Wilson</h2>
+              <p>Position: Financial Analyst</p>
+              <p>Department: Finance</p>
+              <p>Email: david.wilson@example.com</p>
+            </div>
+          </section>
+        </div>
+       
+    </section>
+  </div>
+ 
+  <!-- Admin Login Modal -->
+  <div id="loginModal" class="modal hidden">
+    <div class="modal-content">
+      <span id="closeLoginModal" class="close">&times;</span>
+      <h2>Admin Login</h2>
+      <form id="loginForm">
+        <input type="text" id="adminUsername" placeholder="Username" required />
+        <input type="password" id="adminPassword" placeholder="Password" required />
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  </div>
+ 
+  <!-- Modal for Adding/Editing Employees -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <span id="closeModal" class="close">&times;</span>
+      <h2 id="modalTitle">Add Employee</h2>
+      <form id="employeeForm">
+        <input type="hidden" id="employeeId" />
+        <input type="text" id="name" placeholder="Full Name" required />
+        <input type="text" id="department" placeholder="Department" required />
+        <input type="text" id="position" placeholder="Position" required />
+        <input type="date" id="joiningDate" required />
+        <button type="submit">Save</button>
+      </form>
+    </div>
+  </div>
+ 
+  <script src="script.js"></script>
+</body>
+</html>
+ 

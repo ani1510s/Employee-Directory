@@ -11,16 +11,27 @@ const form = document.getElementById('employeeForm');
 const loginForm = document.getElementById('loginForm');
 const employeeList = document.getElementById('employeeList');
 const searchInput = document.getElementById('searchInput');
+const addEmployeeLink = document.getElementById('addEmployeeLink');
+const profileLink = document.getElementById('profileLink');
+const settingsLink = document.getElementById('settingsLink');
+
 
 const adminCredentials = {
   username: 'admin',
   password: 'password'
 };
 
-// Function to handle admin login button click
+
 loginBtn.onclick = () => {
-  loginModal.classList.remove('hidden');
-};
+    // Simulate admin login
+    isAdmin = true;
+    loginBtn.classList.add('hidden');
+    logoutBtn.classList.remove('hidden');
+    addEmployeeLink.classList.remove('hidden');
+    profileLink.classList.remove('hidden');
+    settingsLink.classList.remove('hidden');
+    };
+    
 
 // Function to handle closing the login modal
 closeLoginModal.onclick = () => {
@@ -46,13 +57,18 @@ loginForm.onsubmit = (e) => {
 };
 
 // Function to handle admin logout button click
+
 logoutBtn.onclick = () => {
-  isAdmin = false;
-  loginBtn.classList.remove('hidden');
-  logoutBtn.classList.add('hidden');
-  addBtn.classList.add('hidden');
+    // Simulate admin logout
+    isAdmin = false;
+    loginBtn.classList.remove('hidden');
+    logoutBtn.classList.add('hidden');
+    addEmployeeLink.classList.add('hidden');
+    profileLink.classList.add('hidden');
+    settingsLink.classList.add('hidden');
+    };
+    
   renderEmployees(); // Update employee list to hide admin actions
-};
 
 // Function to handle add employee button click
 addBtn.onclick = () => {

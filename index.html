@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Employee Directory</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="C:\Users\2395520\Downloads\2648412.jpg" type="image/jpeg">
+  <link rel="icon" href="C:\Users\2395520\Downloads\2648412.jpg" />
 </head>
 <body>
   <div class="container">
@@ -15,7 +15,24 @@
       <button id="logoutBtn" class="hidden">Logout</button>
       <button id="addBtn" class="hidden">+ Add Employee</button>
     </header>
-
+    
+<nav>
+    <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="directory.html">Employee Directory</a></li>
+    <li><a href="departments.html">Departments</a></li>
+    <li><a href="#" id="addEmployeeLink" class="hidden">Add Employee</a></li>
+    <li><input type="text" id="searchInput" placeholder="Search..."></li>
+    <li><a href="#" id="loginBtn">Admin Login</a></li>
+    <li><a href="#" id="logoutBtn" class="hidden">Logout</a></li>
+    <li><a href="profile.html" class="hidden" id="profileLink">Profile</a></li>
+    <li><a href="settings.html" class="hidden" id="settingsLink">Settings</a></li>
+    <li><a href="help.html">Help</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+    </nav>
+    
     <section class="search-bar">
       <input type="text" id="searchInput" placeholder="Search by name or department..." />
     </section>
