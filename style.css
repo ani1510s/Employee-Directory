@@ -1,193 +1,288 @@
-/* Reset & Base Styles */
+/* Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-body {
+  }
+   
+  body {
     font-family: "Segoe UI", sans-serif;
     background-color: #f4f7f9;
     color: #333;
-}
-
-.container {
+  }
+   
+  .container {
     max-width: 960px;
     margin: auto;
     padding: 20px;
-}
-nav {
-    background-color: #333;
-    color: #fff;
+  }
+   
+  nav {
+    background: linear-gradient(to right, #283c86, #45a247);
     padding: 10px 0;
-}
-
-nav ul {
-    list-style: none;
+    margin: 20px 0;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+   
+  nav ul {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-}
-
-nav ul li {
-    margin: 0 10px;
-}
-
-nav ul li a {
+    justify-content: center;
+    list-style: none;
+  }
+   
+  nav ul li {
+    margin: 10px;
+  }
+   
+  nav ul li a {
     color: #fff;
     text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-}
-
-nav {
-    background-color: #555;
-}
-
-nav ul li input {
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-.hidden {
-    display: none;
-}
-
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-header h1 {
-    font-size: 2rem;
-}
-
-#loginBtn, #logoutBtn, #addBtn {
-    padding: 10px 20px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: inline-block;
+  }
+   
+  nav ul li a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+   
+  /* Buttons */
+  #loginBtn, #logoutBtn {
     background-color: #007bff;
-    color: #fff;
+    color: white;
     border: none;
+    padding: 10px 15px;
     border-radius: 8px;
     cursor: pointer;
-}
-
-#loginBtn:hover, #logoutBtn:hover, #addBtn:hover {
+    transition: background 0.3s ease;
+  }
+   
+  #loginBtn:hover, #logoutBtn:hover {
     background-color: #0056b3;
-}
-
-.hidden {
-    display: none;
-}
-
-.search-bar {
-    margin-bottom: 20px;
-}
-
-#searchInput {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
+  }
+   
+  #addEmployeeLink {
+    background: #28a745;
+    padding: 10px 15px;
     border-radius: 8px;
-}
-
-.card-grid {
+    color: white;
+  }
+   
+  .hidden {
+    display: none;
+  }
+   
+  .card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
-}
-
-.card {
-    background: #fff;
+  }
+   
+  .card {
+    background: white;
     padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     position: relative;
-}
-
-.card h3 {
+  }
+   
+  .card h3 {
     margin-bottom: 5px;
-}
-
-.card small {
-    display: block;
-    margin-bottom: 10px;
+  }
+   
+  .card small {
     color: #666;
-}
-
-.card .actions {
+  }
+   
+  .actions {
     position: absolute;
     top: 10px;
     right: 10px;
-}
-
-.actions button {
-    background: none;
+  }
+   
+  .actions button {
     border: none;
-    margin-left: 5px;
+    background: none;
     cursor: pointer;
-    color: #555;
     font-size: 1rem;
-}
-
-.actions button:hover {
-    color: #000;
-}
-
-/* Modal Styles */
-.modal {
+    color: #333;
+  }
+   
+  .actions button:hover {
+    color: red;
+  }
+   
+  /* Modal Styling */
+  .modal {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.5);
+    top: 0; left: 0;
+    width: 100%; height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.modal.hidden {
+    background-color: rgba(0,0,0,0.5);
+    z-index: 10;
+  }
+   
+  .modal.hidden {
     display: none;
-}
-
-.modal-content {
-    background: #fff;
+  }
+   
+  .modal-content {
+    background: white;
     padding: 30px;
     border-radius: 12px;
     width: 100%;
     max-width: 400px;
     position: relative;
-}
-
-.close {
+  }
+   
+  .close {
     position: absolute;
-    top: 10px;
-    right: 15px;
+    top: 10px; right: 15px;
     font-size: 1.5rem;
     cursor: pointer;
-}
-
-form input,
-form button {
+  }
+   
+  form input,
+  form button {
     width: 100%;
-    margin-bottom: 15px;
     padding: 10px;
+    margin-bottom: 15px;
     border-radius: 8px;
     border: 1px solid #ccc;
-}
-
-form button {
+  }
+  
+  form button {
     background-color: #28a745;
     color: white;
     border: none;
-}
-
-form button:hover {
+  } 
+  /* 3D Hover Effect */
+  .card {
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+    transition: transform 0.5s;
+  }
+   
+  .card:hover {
+    transform: perspective(1000px) rotateX(10deg) rotateY(10deg);
+  }
+  /* Profile Picture and Name Styles */
+.profile-picture {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+  }
+  .name {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  .card-inner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+  }
+   
+  .card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+  }
+   /* Dark mode toggle styles */
+.theme-toggle {
+    position: absolute;
+    top: 30px;
+    right: 120px;
+    display: inline-block;
+    width: 50px;
+    height: 25px;
+  }
+   
+  .theme-toggle input {
+    display: none;
+  }
+   
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    background-color: #ccc;
+    border-radius: 25px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: 0.4s;
+  }
+   
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.4s;
+  }
+   
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+   
+  input:checked + .slider:before {
+    transform: translateX(24px);
+  }
+   
+  /* Dark Theme */
+  body.dark-mode {
+    background-color: #1f1f1f;
+    color: #eaeaea;
+  }
+   
+  body.dark-mode nav {
+    background: linear-gradient(to right, #141e30, #243b55);
+  }
+   
+  body.dark-mode .card {
+    background-color: #2c2c2c;
+    color: #f0f0f0;
+    border: 1px solid #444;
+  }
+   
+  body.dark-mode input,
+  body.dark-mode form button {
+    background-color: #333;
+    color: #eaeaea;
+    border: 1px solid #666;
+  }
+   
+  body.dark-mode .modal-content {
+    background-color: #2e2e2e;
+  }
+   
+  body.dark-mode .actions button {
+    color: #ccc;
+  }
+   
+  .card-back {
+    transform: rotateY(180deg);
+  }
+   
+  .card:hover .card-inner {
+    transform: rotateY(180deg);
+  }
+  form button:hover {
     background-color: #218838;
-}
+  }
+   

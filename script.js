@@ -1,100 +1,100 @@
 let employees = [];
 let isAdmin = false;
-const modal = document.getElementById('modal');
-const loginModal = document.getElementById('loginModal');
-const addBtn = document.getElementById('addBtn');
+ 
 const loginBtn = document.getElementById('loginBtn');
 const logoutBtn = document.getElementById('logoutBtn');
-const closeModal = document.getElementById('closeModal');
-const closeLoginModal = document.getElementById('closeLoginModal');
-const form = document.getElementById('employeeForm');
-const loginForm = document.getElementById('loginForm');
+const addEmployeeLink = document.getElementById('addEmployeeLink');
 const employeeList = document.getElementById('employeeList');
 const searchInput = document.getElementById('searchInput');
-const addEmployeeLink = document.getElementById('addEmployeeLink');
-const profileLink = document.getElementById('profileLink');
-const settingsLink = document.getElementById('settingsLink');
-
-
+ 
+const loginModal = document.getElementById('loginModal');
+const closeLoginModal = document.getElementById('closeLoginModal');
+const loginForm = document.getElementById('loginForm');
+ 
+const modal = document.getElementById('modal');
+const closeModal = document.getElementById('closeModal');
+const form = document.getElementById('employeeForm');
+ 
 const adminCredentials = {
-  username: 'admin',
-  password: 'password'
+  username: 'adminuser',
+  password: 'secure123'
 };
-
-
+ 
+// Login Button
 loginBtn.onclick = () => {
-    // Simulate admin login
-    isAdmin = true;
-    loginBtn.classList.add('hidden');
-    logoutBtn.classList.remove('hidden');
-    addEmployeeLink.classList.remove('hidden');
-    profileLink.classList.remove('hidden');
-    settingsLink.classList.remove('hidden');
-    };
-    
-
-// Function to handle closing the login modal
+  loginModal.classList.remove('hidden');
+};
+ 
+// Close Login Modal
 closeLoginModal.onclick = () => {
   loginModal.classList.add('hidden');
 };
-
-// Function to handle admin login form submission
+ 
+// Login Submit
 loginForm.onsubmit = (e) => {
   e.preventDefault();
   const username = document.getElementById('adminUsername').value;
   const password = document.getElementById('adminPassword').value;
-
+ 
   if (username === adminCredentials.username && password === adminCredentials.password) {
     isAdmin = true;
     loginModal.classList.add('hidden');
     loginBtn.classList.add('hidden');
     logoutBtn.classList.remove('hidden');
-    addBtn.classList.remove('hidden');
-    renderEmployees(); // Update employee list to show admin actions
+    addEmployeeLink.classList.remove('hidden');
+    renderEmployees();
   } else {
-    alert('Invalid credentials');
+    alert('Invalid credentials!');
   }
 };
-
-// Function to handle admin logout button click
-
+ 
+// Logout
 logoutBtn.onclick = () => {
-    // Simulate admin logout
-    isAdmin = false;
-    loginBtn.classList.remove('hidden');
-    logoutBtn.classList.add('hidden');
-    addEmployeeLink.classList.add('hidden');
-    profileLink.classList.add('hidden');
-    settingsLink.classList.add('hidden');
-    };
-    
-  renderEmployees(); // Update employee list to hide admin actions
-
-// Function to handle add employee button click
-addBtn.onclick = () => {
-  if (!isAdmin) {
-    alert('Only admin can perform this action');
-    return;
-  }
-  document.getElementById('modalTitle').textContent = 'Add Employee';
+  isAdmin = false;
+  loginBtn.classList.remove('hidden');
+  logoutBtn.classList.add('hidden');
+  addEmployeeLink.classList.add('hidden');
+  renderEmployees();
+};
+ 
+// Search
+searchInput.oninput = () => {
+  renderEmployees(searchInput.value);
+};
+ 
+// Open Add Modal
+addEmployeeLink.onclick = () => {
+  if (!isAdmin) return alert('Only admin can perform this action.');
   form.reset();
   document.getElementById('employeeId').value = '';
+  document.getElementById('modalTitle').textContent = 'Add Employee';
   modal.classList.remove('hidden');
 };
-
-// Function to handle closing the employee modal
-closeModal.onclick = () => {
-  modal.classList.add('hidden');
-};
-
-// Function to handle employee form submission
+// Theme Toggle Logic
+const themeSwitch = document.getElementById('themeSwitch');
+ 
+// Apply saved theme on load
+if (localStorage.getItem('theme') === 'dark') {
+  document.body.classList.add('dark-mode');
+  themeSwitch.checked = true;
+}
+ 
+// Toggle theme
+themeSwitch.addEventListener('change', () => {
+  document.body.classList.toggle('dark-mode');
+  const theme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+  localStorage.setItem('theme', theme);
+});
+ 
+ 
+// Close Add/Edit Modal
+closeModal.onclick = () => modal.classList.add('hidden');
+ 
+// Add/Edit Form Submission
 form.onsubmit = (e) => {
   e.preventDefault();
-  if (!isAdmin) {
-    alert('Only admin can perform this action');
-    return;
-  }
-
+  if (!isAdmin) return alert('Only admin can perform this action.');
+ 
   const id = document.getElementById('employeeId').value;
   const employee = {
     id: id || Date.now().toString(),
@@ -103,54 +103,50 @@ form.onsubmit = (e) => {
     position: document.getElementById('position').value,
     joiningDate: document.getElementById('joiningDate').value,
   };
-
+ 
   if (id) {
     const index = employees.findIndex(emp => emp.id === id);
     employees[index] = employee;
   } else {
     employees.push(employee);
   }
-
+ 
   modal.classList.add('hidden');
   renderEmployees();
 };
-
-// Function to render employees list
+ 
+// Render Employees
 function renderEmployees(filter = '') {
   employeeList.innerHTML = '';
-
   const filtered = employees.filter(emp =>
     emp.name.toLowerCase().includes(filter.toLowerCase()) ||
     emp.department.toLowerCase().includes(filter.toLowerCase())
   );
-
+ 
   if (filtered.length === 0) {
     employeeList.innerHTML = '<p>No employees found.</p>';
     return;
   }
-
+ 
   filtered.forEach(emp => {
     const card = document.createElement('div');
     card.className = 'card';
     card.innerHTML = `
       <div class="actions">
-        ${isAdmin ? `<button onclick="editEmployee('${emp.id}')">✏️</button>
-        <button onclick="deleteEmployee('${emp.id}')">🗑️</button>` : ''}
+        ${isAdmin ? `emp.id}')">🗑️</button>` : ''}
+
       </div>
-      <h3>${emp.name}</h3>
+      
+${emp.name}</h3>
       <small>${emp.position} | ${emp.department}</small>
       <p>Joined: ${emp.joiningDate}</p>
     `;
     employeeList.appendChild(card);
   });
 }
-
-// Function to handle editing an employee
+ 
 function editEmployee(id) {
-  if (!isAdmin) {
-    alert('Only admin can perform this action');
-    return;
-  }
+  if (!isAdmin) return;
   const emp = employees.find(e => e.id === id);
   document.getElementById('modalTitle').textContent = 'Edit Employee';
   document.getElementById('employeeId').value = emp.id;
@@ -160,21 +156,13 @@ function editEmployee(id) {
   document.getElementById('joiningDate').value = emp.joiningDate;
   modal.classList.remove('hidden');
 }
-
-// Function to handle deleting an employee
+ 
 function deleteEmployee(id) {
-  if (!isAdmin) {
-    alert('Only admin can perform this action');
-    return;
-  }
+  if (!isAdmin) return;
   employees = employees.filter(e => e.id !== id);
   renderEmployees();
 }
-
-// Function to handle search input
-searchInput.oninput = () => {
-  renderEmployees(searchInput.value);
-};
-
-// Initial render of employees list
+ 
+// Initial render
 renderEmployees();
+ 
